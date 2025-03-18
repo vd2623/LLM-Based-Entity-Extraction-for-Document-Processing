@@ -1,5 +1,3 @@
-# LLM-Based-Entity-Extraction-for-Document-Processing
-
 # LLM-Based Entity Extraction for Document Processing
 
 ## Overview
