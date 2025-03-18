@@ -1,0 +1,23 @@
+# LLM-Based Entity Extraction for Document Processing
+
+## entity_extraction.py
+```python
+import spacy
+from transformers import pipeline
+
+def extract_entities(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    entities = {ent.label_: ent.text for ent in doc.ents}
+    return entities
+
+def summarize_text(text):
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+    summary = summarizer(text, max_length=100, min_length=30, do_sample=False)
+    return summary[0]['summary_text']
+
+if __name__ == "__main__":
+    sample_text = "Amazon acquired Whole Foods for $13.7 billion in 2017. Jeff Bezos led the deal."
+    print("Entities:", extract_entities(sample_text))
+    print("Summary:", summarize_text(sample_text))
+```
